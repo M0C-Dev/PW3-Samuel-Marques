@@ -13,7 +13,26 @@
             <h1 class="titulo-big">🍅Calculadora-tomate</h1>
         </header>
         <main>
+            <h2 class="section-big">Sobre</h2>
             <p>Bem-vindo a minha calculadora! Escolha entre as diversas opções de funções e digite os números necessarios.</p>
+            <h2 class="section-big">Calculadora</h2>
+            <form action="" id="calculadora">
+                <label for="function">Selecione a função: </label>
+                <select name="function" id="function">
+                    <option value="dobro">Dobro</option>
+                    <option value="triplo">Triplo</option>
+                    <option value="quadruplo">Quadruplo</option>
+                    <option value="quintuplo">Quintuplo</option>
+                </select>
+                <div id="digitos">
+                    <span>Digite os digitos da operação:</span><br>
+                    <input type="number" id="num1">
+                    <input type="number" id="num2">
+                    <input type="number" id="num3">
+                    <input type="number" id="num4">
+                </div>
+                <input type="submit" id="enviar">
+            </form>
         </main>
         <footer>
             <span>Site por Samuel M. 2026 | Dedicado aos meus gatos.</span>
