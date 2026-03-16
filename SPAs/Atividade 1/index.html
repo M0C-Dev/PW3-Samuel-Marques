@@ -23,20 +23,34 @@
                     <option value="triplo">Triplo</option>
                     <option value="quadruplo">Quadruplo</option>
                     <option value="quintuplo">Quintuplo</option>
+                    <option value="sextuplo">Sêxtuplo</option>
+                    <option value="potDois">Quadrado</option>
+                    <option value="potTres">Cubo</option>
+                    <option value="potQuatro">Elevado a quatro</option>
+                    <option value="potCinco">Elevado a cinco</option>
+                    <option value="potSeis">Elevado a seis</option>
+                    <option value="mediaQuatro">Media de 4 números</option>
+                    <option value="baskhara">Bhaskara</option>
                 </select>
                 <div id="digitos">
-                    <span>Digite os digitos da operação:</span><br>
+                    <span class="small-grey">Digite os digitos da operação:</span><br>
                     <input type="number" id="num1">
                     <input type="number" id="num2">
                     <input type="number" id="num3">
                     <input type="number" id="num4">
                 </div>
-                <input type="submit" id="enviar">
             </form>
+            <button id="enviar" onclick="calcular()">Calcular</button>
+            <div id="resultados">
+                <span class="small-grey">Resultados:</span><br>
+                <textarea id="resultado-box" rows="6" readonly="true"></textarea>
+            </div>
         </main>
         <footer>
             <span>Site por Samuel M. 2026 | Dedicado aos meus gatos.</span>
         </footer>
     </div>
+
+    <script src="script.js"></script>
 </body>
 </html>

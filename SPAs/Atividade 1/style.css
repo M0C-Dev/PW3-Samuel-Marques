@@ -16,7 +16,7 @@ body {
     margin: 20px;
 }
 
-#digitos span {
+.small-grey {
     color: grey;
     font-size: small;
 }
@@ -25,12 +25,18 @@ body {
     text-align: center;
     font-size: 1.8rem;
     width: 50px;
-    margin: 2px 5px;
+    margin: 0px 5px;
 }
 
 #enviar {
-    margin: 10px;
+    margin: 0px;
     font-size: 1.5rem;
+}
+
+#resultados textarea {
+    resize: none;
+    width: 100%;
+    box-sizing: border-box;
 }
 
 header, main, footer {
