@@ -16,7 +16,40 @@
             <h2 class="section-big">Sobre</h2>
             <p>Bem-vindo ao meu mercado! Este é um aplicativo de compras, selecione os produtos, as quantidades e as parcelas.</p>
             <h2 class="section-big">Calculadora</h2>
-            <button id="enviar" onclick="calcular()">Calcular compra</button>
+            <div id="Caixa-style">
+                <fieldset>
+                    <legend>Produtos</legend>
+                    <table id="Tabela-produtos">
+                        <tr>
+                            <th>
+                                Produto
+                            </th>
+                            <th>
+                                Preço (R$)
+                            </th>
+                            <th>
+                                Quantidade
+                            </th>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input type="checkbox" name="" id="">
+                                Camiseta regata
+                            </td>
+                            <td>
+                                19.99
+                            </td>
+                            <td>
+                                <input type="number">
+                            </td>
+                        </tr>
+                    </table>
+                </fieldset>
+                <fieldset>
+                    <legend>Forma de pagamento</legend>
+                    <button id="enviar" onclick="calcular()">Calcular compra</button>
+                </fieldset>
+            </div>
             <div id="resultados">
                 <span class="small-grey">Resultados:</span><br>
                 <textarea id="resultado-box" rows="6" readonly="true"></textarea>
