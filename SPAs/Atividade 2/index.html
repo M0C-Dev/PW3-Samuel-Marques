@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Mercado-limão</title>
+</head>
+<body>
+    <div id="container">
+        <header>
+            <h1 class="titulo-big">🍋 Mercado-limão</h1>
+        </header>
+        <main>
+            <h2 class="section-big">Sobre</h2>
+            <p>Bem-vindo ao meu mercado! Este é um aplicativo de compras, selecione os produtos, as quantidades e as parcelas.</p>
+            <h2 class="section-big">Calculadora</h2>
+            <button id="enviar" onclick="calcular()">Calcular compra</button>
+            <div id="resultados">
+                <span class="small-grey">Resultados:</span><br>
+                <textarea id="resultado-box" rows="6" readonly="true"></textarea>
+            </div>
+        </main>
+        <footer>
+            <span>Site por Samuel M. 2026 | Dedicado aos meus gatos.</span>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

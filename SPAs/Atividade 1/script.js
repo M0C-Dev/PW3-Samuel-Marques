@@ -49,6 +49,13 @@ const funcoes = {
         const x2 = (-b - Math.sqrt(delta)) / (2*a)
 
         return "x1 = " + x1 + " / x2 = " + x2
+    },
+    imparOuPar(a,b,c,d){
+        if (a % 2 === 0) {
+            return "Par"
+          } else {
+            return "Ímpar"
+          }
     }
 };
 
