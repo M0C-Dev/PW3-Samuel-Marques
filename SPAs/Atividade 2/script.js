@@ -27,7 +27,7 @@ listaDeProdutos.forEach((produto, index) => {
             ${produto.preco.toFixed(2)}
         </td>
         <td>
-            <input type="number" class="quantidade-number" min="0" value="0" data-index="${index}">
+            <input type="number" class="quantidade-number" min="1" value="1" data-index="${index}">
         </td>
     `;
 
