@@ -12,3 +12,24 @@ const listaDeProdutos = [
     {nome: "Chinelo", preco: 14.90},
     {nome: "Boné", preco: 6.90}
 ];
+
+const tbody = document.getElementById("corpo-table");
+
+listaDeProdutos.forEach((produto, index) => {
+    const tr = document.createElement("tr");
+
+    tr.innerHTML = `
+        <td>
+            <input type="checkbox" class="produto-checked" data-index="${index}">
+            ${produto.nome}
+        </td>
+        <td>
+            ${produto.preco.toFixed(2)}
+        </td>
+        <td>
+            <input type="number" class="quantidade-number" min="0" value="0" data-index="${index}">
+        </td>
+    `;
+
+    tbody.appendChild(tr)
+});

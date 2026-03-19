@@ -76,3 +76,7 @@ footer {
     text-align: center;
     background-color: #7ca5ff;
 }
+
+.quantidade-number {
+    width: 35px;
+}
