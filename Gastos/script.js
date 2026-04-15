@@ -203,7 +203,11 @@ apagarHistorico.addEventListener("click", function() {
     const confirmar = confirm(`APAGAR TODOS OS DADOS? (IRREVERSIVEL!)`);
 
     if (confirmar) {
-        localStorage.clear();
+        gastos = [];
+        localStorage.removeItem("gastos");
+
+        renderizarLista();
+        renderizarTotal();
     }
 });
 
