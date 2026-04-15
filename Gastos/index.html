@@ -1,62 +1,81 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gatos Pessoais</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div>
         <header>
-            <h1>Gatos Pessoais</h1>
+            <h1>Gatos <span class="tiny-grey">(gastos)</span> Pessoais 😼💲</h1>
         </header>
         <main>
+            <!-- FORMULÁRIO -->
             <div>
                 <fieldset>
-                    <legend>Adicionar gasto</legend>
-                    <form action="">
-                        <legend>Nome do gasto</legend> <input type="text" id="nomeGast">
-                        <legend>Categoria</legend>
-                        <select name="categoria" id="categoriaGast">
-                            <option value="Comida">Comida</option>
-                            <option value="Passeio">Passeio</option>
+                    <legend>Adicionar gatos</legend>
+
+                    <form id="formGasto">
+                        
+                        <label for="descricao">Descrição</label>
+                        <input type="text" id="descricao">
+
+                        <br><br>
+
+                        <label for="categoria">Categoria</label>
+                        <select id="categoria">
+                            <option value="Alimentacao">Alimentação</option>
+                            <option value="Lazer">Lazer</option>
+                            <option value="Transporte">Transporte</option>
                             <option value="Outro">Outro</option>
                         </select>
-                        <legend>Valor</legend> <input type="number" name="valor" id="valorGast">
-                        <br><button type="submit">Anotar!</button>
+
+                        <br><br>
+
+                        <label for="valor">Valor</label>
+                        <input type="number" id="valor" step="0.01">
+
+                        <br><br>
+
+                        <button type="submit">Anotar!</button>
                     </form>
                 </fieldset>
             </div>
+            <!-- FILTRO -->
             <div>
-                <div>
-                    <fieldset>
-                        <legend>Filtrar</legend>
-                        <form action="">
-                            <legend>Categoria</legend>
-                            <select name="" id="">
-                                <option value="Comida">Comida</option>
-                                <option value="Passeio">Passeio</option>
-                                <option value="Outro">Outro</option>
-                            </select>
-                        </form>
-                    </fieldset>
-                </div>
-                <div>
-                    <fieldset>
-                        <legend>Gastos</legend>
-                    </fieldset>
-                </div>
-                <div>
-                    <fieldset>
-                        <legend>Total</legend>
-                        <p>O valor total se dá...</p>
-                    </fieldset>
-                </div>
+                <fieldset>
+                    <legend>Filtrar</legend>
+
+                    <label for="filtroCategoria">Categoria</label>
+                    <select id="filtroCategoria">
+                        <option value="Todos">Todos</option>
+                        <option value="Comida">Comida</option>
+                        <option value="Passeio">Passeio</option>
+                        <option value="Outro">Outro</option>
+                    </select>
+                </fieldset>
+            </div>
+            <!-- LISTA DE GASTOS -->
+            <div>
+                <fieldset>
+                    <legend>Gastos</legend>
+                    <div id="listaGastos">
+                    </div>
+                </fieldset>
+            </div>
+            <!-- TOTAL -->
+            <div>
+                <fieldset>
+                    <legend>Total</legend>
+                    <p>Total: <span id="total" class="valor-gasto">0.00</span></p>
+                </fieldset>
             </div>
         </main>
         <footer>
-
         </footer>
     </div>
+    <script src="script.js"></script>
 </body>
 </html>
