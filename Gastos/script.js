@@ -7,6 +7,7 @@ const total = document.querySelector('#total');
 const totalCategoria = document.querySelector('#total-categoria');
 const filtro = document.querySelector('#filtroCategoria');
 const ordem = document.querySelector('#ordenarPor');
+const apagarHistorico = document.querySelector('#apagarHistorico');
 
 // ADICIONAR GASTOS
 form.addEventListener('submit', function(event) {
@@ -198,6 +199,13 @@ function carregarDados() {
     renderizarTotal();
 }
 
+apagarHistorico.addEventListener("click", function() {
+    const confirmar = confirm(`APAGAR TODOS OS DADOS? (IRREVERSIVEL!)`);
+
+    if (confirmar) {
+        localStorage.clear();
+    }
+});
 
 // EVENTOS
 document.addEventListener("DOMContentLoaded", function() {

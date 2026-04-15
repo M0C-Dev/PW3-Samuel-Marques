@@ -26,7 +26,8 @@
     width: 60px;
 }
 
-.gasto button {
+button {
+    margin: 10px;
     margin-left: auto;
     padding: 5px;
     color: red;
