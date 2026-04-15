@@ -1,5 +1,10 @@
 .tiny-grey {
     font-size: x-small;
+    color: grey;
+}
+.smaller-grey {
+    font-size: small;
+    color: grey;
 }
 
 .gasto {

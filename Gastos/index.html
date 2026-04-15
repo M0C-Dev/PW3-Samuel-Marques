@@ -51,9 +51,17 @@
                     <label for="filtroCategoria">Categoria</label>
                     <select id="filtroCategoria">
                         <option value="Todos">Todos</option>
-                        <option value="Comida">Comida</option>
-                        <option value="Passeio">Passeio</option>
+                        <option value="Alimentacao">Alimentação</option>
+                        <option value="Lazer">Lazer</option>
+                        <option value="Transporte">Transporte</option>
                         <option value="Outro">Outro</option>
+                    </select>
+                    <label for="ordemMostragem">Ordenar por</label>
+                    <select id="ordenarPor">
+                        <option value="maisAntigo">Mais antigo</option>
+                        <option value="maisRecente">Mais recente</option>
+                        <option value="maiorMenor">Maior para menor</option>
+                        <option value="menorMaior">Menor para maior</option>
                     </select>
                 </fieldset>
             </div>
@@ -69,7 +77,9 @@
             <div>
                 <fieldset>
                     <legend>Total</legend>
-                    <p>Total: <span id="total" class="valor-gasto">0.00</span></p>
+                    <p>Total: <span id="total" class="valor-gasto">0.00</span>
+                    <br>
+                    <span class="smaller-grey">Total da categoria: <span id="total-categoria">0.00</span></span></p>
                 </fieldset>
             </div>
         </main>

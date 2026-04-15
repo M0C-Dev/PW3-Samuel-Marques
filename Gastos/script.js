@@ -1,9 +1,12 @@
 // Array de todos os gastos
-let gastos = []
+let gastos = [];
 
 const lista = document.querySelector('#listaGastos');
 const form = document.querySelector('#formGasto');
-const total = document.querySelector('#total')
+const total = document.querySelector('#total');
+const totalCategoria = document.querySelector('#total-categoria');
+const filtro = document.querySelector('#filtroCategoria');
+const ordem = document.querySelector('#ordenarPor');
 
 // ADICIONAR GASTOS
 form.addEventListener('submit', function(event) {
@@ -14,49 +17,89 @@ form.addEventListener('submit', function(event) {
     const valor = document.querySelector('#valor').value;
 
     // Validação
-    if (descricao === '' || valor === '' || isNaN(valor) || valor <= 0)
-    {
-        alert('Insira valores validos!');
+    if (descricao === '' || valor === '' || isNaN(valor) || valor <= 0) {
+        alert('Insira valores válidos!');
         return;
     }
 
-    // Converte valor string para INT
     const valorFloat = parseFloat(valor);
 
-    // Cria objeto do gasto
     const gasto = {
         descricao: descricao,
         categoria: categoria,
         valor: valorFloat
-    }
+    };
 
     gastos.push(gasto);
-    // Salva
     salvarDados();
-
-    // DEBUG!
-    console.log(gastos);
 
     renderizarLista();
     renderizarTotal();
-    
+
+    // limpar campos
     document.querySelector('#descricao').value = '';
     document.querySelector('#valor').value = '';
 });
 
+
 // EXIBIR LISTA
 function renderizarLista() {
-    // Primeiro limpa a lista
     lista.innerHTML = '';
 
-    gastos.forEach(function(gasto, index) {
+    const categoriaSelecionada = filtro.value;
+    const ordemSelecionada = ordem.value;
+
+    let listaFiltrada = gastos;
+
+    // FILTRO
+    switch (categoriaSelecionada) {
+        case "Alimentacao":
+        case "Lazer":
+        case "Transporte":
+        case "Outro":
+            listaFiltrada = gastos.filter(function(gasto) {
+                return gasto.categoria === categoriaSelecionada;
+            });
+            break;
+
+        case "Todos":
+        default:
+            listaFiltrada = gastos;
+    }
+
+    // CRIA CÓPIA PRA ORDENAR
+    let listaFinal = [...listaFiltrada];
+
+    // ORDENAÇÃO
+    switch (ordemSelecionada) {
+        case "maisRecente":
+            listaFinal.reverse();
+            break;
+
+        case "maisAntigo":
+            break;
+
+        case "maiorMenor":
+            listaFinal.sort(function(a, b) {
+                return b.valor - a.valor;
+            });
+            break;
+
+        case "menorMaior":
+            listaFinal.sort(function(a, b) {
+                return a.valor - b.valor;
+            });
+            break;
+    }
+
+    // RENDERIZA
+    listaFinal.forEach(function(gasto) {
         const divGasto = document.createElement("div");
         divGasto.classList.add("gasto");
 
         const img = document.createElement("img");
 
         let source;
-
         switch (gasto.categoria) {
             case 'Lazer':
                 source = "imgs/icones/icone-lazer.png";
@@ -68,8 +111,6 @@ function renderizarLista() {
                 source = "imgs/icones/icone-transporte.png";
                 break;
             case 'Outro':
-                source = "imgs/icones/icone-outro.png";
-                break;
             default:
                 source = "imgs/icones/icone-outro.png";
         }
@@ -82,6 +123,7 @@ function renderizarLista() {
         titulo.textContent = gasto.descricao;
 
         const categoria = document.createElement("span");
+        categoria.classList.add("tiny-grey");
         categoria.textContent = gasto.categoria;
 
         const valor = document.createElement("span");
@@ -99,10 +141,10 @@ function renderizarLista() {
             const confirmar = confirm(`Remover "${gasto.descricao}"?`);
 
             if (confirmar) {
-                gastos.splice(index, 1);
-                // Salva
-                salvarDados();
+                const indexReal = gastos.indexOf(gasto);
+                gastos.splice(indexReal, 1);
 
+                salvarDados();
                 renderizarLista();
                 renderizarTotal();
             }
@@ -116,19 +158,31 @@ function renderizarLista() {
     });
 }
 
-// RENDERIZAR TOTAL!!!
+
+// TOTAL
 function renderizarTotal() {
-    let valorTotal = 0
-    
-    gastos.forEach(function(gasto, index) {
+    let valorTotal = 0;
+    let valorTotalCategoria = 0;
+
+    const categoriaSelecionada = filtro.value;
+
+    gastos.forEach(function(gasto) {
         valorTotal += gasto.valor;
-    })
+
+        if (categoriaSelecionada === "Todos" || gasto.categoria === categoriaSelecionada) {
+            valorTotalCategoria += gasto.valor;
+        }
+    });
 
     total.textContent = `R$ ${valorTotal.toFixed(2)}`;
+
+    if (totalCategoria) {
+        totalCategoria.textContent = `R$ ${valorTotalCategoria.toFixed(2)}`;
+    }
 }
 
-// SALVAR!
 
+// SALVAR
 function salvarDados() {
     localStorage.setItem("gastos", JSON.stringify(gastos));
 }
@@ -138,12 +192,23 @@ function carregarDados() {
 
     if (dados) {
         gastos = JSON.parse(dados);
-        renderizarLista();
-        renderizarTotal();
     }
+
+    renderizarLista();
+    renderizarTotal();
 }
 
-// Carrega ao iniciar
+
+// EVENTOS
 document.addEventListener("DOMContentLoaded", function() {
     carregarDados();
+});
+
+filtro.addEventListener('change', function() {
+    renderizarLista();
+    renderizarTotal();
+});
+
+ordem.addEventListener('change', function() {
+    renderizarLista();
 });
