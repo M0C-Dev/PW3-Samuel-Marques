@@ -1,3 +1,12 @@
+* {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+#container {
+    max-width: 50%;
+    margin: auto;
+}
+
 .tiny-grey {
     font-size: x-small;
     color: grey;
