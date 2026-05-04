@@ -1,0 +1,22 @@
+* {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+#container {
+    max-width: 50%;
+    margin: auto;
+}
+
+footer > p {
+    margin: 45px 0px;
+    text-align: center;
+}
+
+header {
+    margin: auto;
+    height: 100px;
+}
+
+header > img {
+    height: 100%;
+}
