@@ -3,20 +3,34 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sistema TWISTER 🐭</title>
+    <title>Sistema TWISTER</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div id="container">
         <header>
             <img src="imgs/rato-logos.png" alt="">
-            <span id="logo">Sistema TWISTER 🐭</span>
+            <span id="logo">Sistema TWISTER</span>
         </header>
         <nav>
-            <a href="index.html">Home</a> <a href="">Sobre</a>
+            <a href="index.html">Primeira Etapa: Cadastro da Sala</a>
         </nav>
         <main>
+            <form action="">
+                <fieldset>
+                    <legend>Formulário</legend>
+                    <br><br>
+                    <label for="">Nome da Turma:</label>
+                    <input type="text" name="turma" required><br><br><br><br>
 
+                    <label>Quantidade de Alunos:</label>
+                    <input type="number" name="quantidade" min="1" required>
+                    <br><br><br>
+                </fieldset>
+                <br><br>
+                <button type="submit" class="submitButton">Continuar</button>
+                <br><br>
+            </form>
         </main>
         <footer>
             <hr>

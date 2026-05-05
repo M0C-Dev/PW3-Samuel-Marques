@@ -15,8 +15,32 @@ footer > p {
 header {
     margin: auto;
     height: 100px;
+
+    display: flex;
+    align-items: center;
+
+    background: linear-gradient(to right, #417dff, transparent);
+}
+
+#logo {
+    font-family: monospace;
+    color: yellow;
+    font-size: 2em;
+    font-weight: bold;
 }
 
 header > img {
     height: 100%;
+}
+
+nav {
+    margin: 10px 0px;
+    background-color: #bad0ff;
+    text-align: center;
+    padding: 5px;
+}
+
+.submitButton {
+  display: block;
+  margin: 0px auto;
 }
