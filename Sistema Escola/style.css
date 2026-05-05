@@ -44,3 +44,7 @@ nav {
   display: block;
   margin: 0px auto;
 }
+
+.miniTitle {
+    text-decoration: underline;
+}
