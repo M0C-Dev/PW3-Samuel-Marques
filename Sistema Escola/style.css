@@ -45,6 +45,20 @@ nav {
   margin: 0px auto;
 }
 
+.voltar {
+    font-size: small;
+}
+
 .miniTitle {
     text-decoration: underline;
+}
+
+table { 
+    width: 90%;
+    margin: 10px auto;
+    border-collapse: collapse;
+}
+th, td {
+    padding: 5px;
+    text-align: center; 
 }
