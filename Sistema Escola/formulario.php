@@ -1,3 +1,15 @@
+<?php
+
+if (isset($_POST['turma']) && isset($_POST['quantidade'])) {
+    $turma = $_POST['turma'];
+    $quantidade = $_POST['quantidade'];
+} else if (empty($_POST)) {
+    header("Location: index.html");
+    exit();
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -19,9 +31,9 @@
             <fieldset>
                     <legend>Sobre a sala</legend>
                     <br>
-                    <span>Nome da Turma...</span><br><br>
+                    <span>Nome da Turma...<b><?php echo $turma ?></b></span><br><br>
 
-                    <span>Quantidade de Alunos...</span>
+                    <span>Quantidade de Alunos...<b><?php echo $quantidade ?></b></span>
                     <br><br>
             </fieldset>
             <form action="">
