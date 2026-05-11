@@ -54,13 +54,23 @@ if (isset($_POST['turma']) && isset($_POST['quantidade'])) {
                         <th>N2</th>
                         <th>T1</th>
                     </tr>
-                    <tr>
-                        <td>...</td>
-                        <td>...</td>
-                        <td>...</td>
-                        <td>...</td>
-                        <td>...</td>
-                    </tr>
+                    <?php for ($i = 1; $i <= $quantidade; $i++): ?>
+                        <tr>
+                            <td><?php echo $i; ?></td>
+                            <td>
+                                <input type="text" name="alunoNome[]" placeholder="Nome do aluno" required>
+                            </td>
+                            <td>
+                                <input type="number" name="alunoN1[]" step="0.1" min="0" max="10" required>
+                            </td>
+                            <td>
+                                <input type="number" name="alunoN2[]" step="0.1" min="0" max="10" required>
+                            </td>
+                            <td>
+                                <input type="number" name="alunoT1[]" step="0.1" min="0" max="10" required>
+                            </td>
+                        </tr>
+                    <?php endfor; ?>
                 </table>
 
                 <br><br>

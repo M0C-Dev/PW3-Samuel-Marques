@@ -55,10 +55,31 @@ nav {
 
 table { 
     width: 90%;
-    margin: 10px auto;
+    margin: 20px auto;
     border-collapse: collapse;
+    border: 3px solid #000000;
 }
+
 th, td {
-    padding: 5px;
-    text-align: center; 
+    border: 1px solid #ddd;
+    text-align: center;
+    padding: 0;
+}
+
+th {
+    background-color: #f4f4f4;
+    padding: 10px;
+}
+
+table input {
+    width: 100%;
+    box-sizing: border-box;
+    border: none;
+    padding: 10px;
+    outline: none;
+}
+
+/* Efeito visual ao clicar no campo */
+table input:focus {
+    background-color: #f9f9f9;
 }
