@@ -36,7 +36,7 @@ if (isset($_POST['turma']) && isset($_POST['quantidade'])) {
                     <span>Quantidade de Alunos...<b><?php echo $quantidade ?></b></span>
                     <br><br>
             </fieldset>
-            <form action="">
+            <form action="analise.php" method="POST">
 
                 <table border="1">
 
