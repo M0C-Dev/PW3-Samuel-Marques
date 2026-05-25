@@ -37,7 +37,9 @@ if (isset($_POST['turma']) && isset($_POST['quantidade'])) {
                     <br><br>
             </fieldset>
             <form action="analise.php" method="POST">
-
+                <input type="hidden" name="turma" value="<?php echo $turma; ?>">
+                <input type="hidden" name="quantidade" value="<?php echo $quantidade; ?>">
+                
                 <table border="1">
 
                     <colgroup>
