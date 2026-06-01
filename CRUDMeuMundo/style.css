@@ -1,0 +1,47 @@
+* {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+#container {
+    max-width: 50%;
+    margin: auto;
+}
+
+footer > p {
+    margin: 45px 0px;
+    text-align: center;
+}
+
+header {
+    margin: auto;
+    height: 100px;
+
+    display: flex;
+    align-items: center;
+
+    background: linear-gradient(to right, #00c510, transparent);
+}
+
+#logo {
+    font-family: monospace;
+    color: rgb(0, 99, 13);
+    font-style: italic;
+    font-size: 50px;
+    font-weight: bold;
+}
+
+header > img {
+    height: 100%;
+}
+
+nav {
+    margin: 10px 0px;
+    background-color: #00c510;
+    text-align: center;
+    padding: 5px;
+}
+
+.miniTitle {
+    font-style: italic;
+    letter-spacing: 3px;
+}
