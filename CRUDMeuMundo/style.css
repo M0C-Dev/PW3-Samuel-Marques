@@ -45,3 +45,146 @@ nav {
     font-style: italic;
     letter-spacing: 3px;
 }
+
+.menu{
+    margin-top:10px;
+}
+
+.menu a{
+
+    text-decoration:none;
+    color:black;
+
+    background:#dcdcdc;
+
+    border:1px solid black;
+
+    padding:4px 10px;
+
+    margin:2px;
+
+    display:inline-block;
+
+}
+
+.menu a:hover{
+
+    background:#bdbdbd;
+
+}
+
+main{
+
+    border:1px solid black;
+
+    padding:15px;
+
+    margin-top:10px;
+
+    background:white;
+
+}
+
+h2{
+
+    background:#00c510;
+
+    color:white;
+
+    padding:5px;
+
+    font-size:20px;
+
+}
+
+label{
+
+    display:block;
+
+    margin-top:10px;
+
+    font-weight:bold;
+
+}
+
+input, select{
+
+    width:100%;
+
+    border:1px solid black;
+
+    padding:4px;
+
+    margin-top:3px;
+
+    margin-bottom:8px;
+
+    box-sizing:border-box;
+
+    background:white;
+
+}
+
+button{
+
+    border:1px solid black;
+
+    background:#dcdcdc;
+
+    padding:4px 12px;
+
+    cursor:pointer;
+
+}
+
+button:hover{
+
+    background:#bdbdbd;
+
+}
+
+table{
+
+    width:100%;
+
+    border-collapse:collapse;
+
+    margin-top:15px;
+
+}
+
+th{
+
+    background:#00c510;
+
+    color:white;
+
+    border:1px solid black;
+
+    padding:5px;
+
+}
+
+td{
+
+    border:1px solid black;
+
+    padding:5px;
+
+    text-align:center;
+
+}
+
+td a{
+
+    color:blue;
+
+    text-decoration:underline;
+
+}
+
+hr{
+
+    margin:20px 0;
+
+}
