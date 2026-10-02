@@ -49,3 +49,26 @@ CREATE TABLE cidades (
     FOREIGN KEY (pais_id) REFERENCES paises(id),
     FOREIGN KEY (governante_id) REFERENCES governantes(id)
 );
+
+CREATE TABLE usuarios (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    login VARCHAR(100) NOT NULL UNIQUE,
+    senha VARCHAR(255) NOT NULL,
+    tentativas_erro INT DEFAULT 0,
+    bloqueado TINYINT DEFAULT 0,
+    primeiro_acesso TINYINT DEFAULT 1
+);
+
+CREATE TABLE logs (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    usuario_id INT,
+    login_digitado VARCHAR(100),
+    evento VARCHAR(50) NOT NULL,
+    data_hora DATETIME DEFAULT CURRENT_TIMESTAMP,
+
+    FOREIGN KEY (usuario_id) REFERENCES usuarios(id)
+);
+
+-- usuário inicial: login admin, senha password (o sistema obriga a trocar no primeiro acesso)
+INSERT INTO usuarios (login, senha)
+VALUES ('admin', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi');
