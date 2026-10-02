@@ -34,7 +34,7 @@ if ($acao == "login") {
     // usuário não existe
     if (!$usuario) {
         registrar_log($conn, "NULL", $login, "LOGIN_USUARIO_INEXISTENTE");
-        header("Location: index.php?pagina=login&msg=erro");
+        header("Location: login.php?msg=erro");
         exit();
     }
 
@@ -43,7 +43,7 @@ if ($acao == "login") {
     // usuário já está bloqueado
     if ($usuario["bloqueado"] == 1) {
         registrar_log($conn, $id, $login, "TENTATIVA_USUARIO_BLOQUEADO");
-        header("Location: index.php?pagina=login&msg=bloqueado");
+        header("Location: login.php?msg=bloqueado");
         exit();
     }
 
@@ -72,7 +72,7 @@ if ($acao == "login") {
 
         registrar_log($conn, $id, $login, "USUARIO_BLOQUEADO");
 
-        header("Location: index.php?pagina=login&msg=bloqueado");
+        header("Location: login.php?msg=bloqueado");
         exit();
     }
 
@@ -80,14 +80,14 @@ if ($acao == "login") {
 
     registrar_log($conn, $id, $login, "SENHA_INCORRETA");
 
-    header("Location: index.php?pagina=login&msg=erro");
+    header("Location: login.php?msg=erro");
     exit();
 }
 
 if ($acao == "trocar_senha") {
 
     if (!isset($_SESSION["usuario_id"])) {
-        header("Location: index.php?pagina=login");
+        header("Location: login.php");
         exit();
     }
 
@@ -96,12 +96,12 @@ if ($acao == "trocar_senha") {
     $confirmar = $_POST["confirmar"];
 
     if ($nova != $confirmar) {
-        header("Location: index.php?pagina=trocar_senha&msg=diferentes");
+        header("Location: login.php?msg=diferentes");
         exit();
     }
 
     if (strlen($nova) < 4) {
-        header("Location: index.php?pagina=trocar_senha&msg=curta");
+        header("Location: login.php?msg=curta");
         exit();
     }
 
@@ -110,7 +110,7 @@ if ($acao == "trocar_senha") {
 
     // não pode continuar com a mesma senha de antes
     if (password_verify($nova, $usuario["senha"])) {
-        header("Location: index.php?pagina=trocar_senha&msg=igual");
+        header("Location: login.php?msg=igual");
         exit();
     }
 
@@ -134,13 +134,61 @@ if ($acao == "sair") {
 
     session_destroy();
 
-    header("Location: index.php?pagina=login&msg=sair");
+    header("Location: login.php?msg=sair");
     exit();
 }
 
 // daqui para baixo só entra quem estiver logado e já tiver trocado a senha
 if (!isset($_SESSION["usuario_id"]) || $_SESSION["primeiro_acesso"] == 1) {
-    header("Location: index.php");
+    header("Location: login.php");
+    exit();
+}
+
+
+/*
+   MANUTENÇÃO DE SENHA
+*/
+
+if ($acao == "alterar_senha") {
+
+    $id = (int) $_SESSION["usuario_id"];
+    $atual = $_POST["atual"];
+    $nova = $_POST["nova"];
+    $confirmar = $_POST["confirmar"];
+
+    $resultado = mysqli_query($conn, "SELECT senha FROM usuarios WHERE id = $id");
+    $usuario = mysqli_fetch_assoc($resultado);
+
+    // senha atual precisa estar correta
+    if (!password_verify($atual, $usuario["senha"])) {
+        registrar_log($conn, $id, $_SESSION["login"], "SENHA_ATUAL_INCORRETA");
+        header("Location: index.php?pagina=alterar_senha&msg=atual_errada");
+        exit();
+    }
+
+    if ($nova != $confirmar) {
+        header("Location: index.php?pagina=alterar_senha&msg=diferentes");
+        exit();
+    }
+
+    if (strlen($nova) < 4) {
+        header("Location: index.php?pagina=alterar_senha&msg=curta");
+        exit();
+    }
+
+    // não pode continuar com a mesma senha de antes
+    if (password_verify($nova, $usuario["senha"])) {
+        header("Location: index.php?pagina=alterar_senha&msg=igual");
+        exit();
+    }
+
+    $hash = password_hash($nova, PASSWORD_DEFAULT);
+
+    mysqli_query($conn, "UPDATE usuarios SET senha = '$hash' WHERE id = $id");
+
+    registrar_log($conn, $id, $_SESSION["login"], "SENHA_ALTERADA");
+
+    header("Location: index.php?pagina=alterar_senha&msg=ok");
     exit();
 }
 
